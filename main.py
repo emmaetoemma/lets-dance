@@ -38,7 +38,7 @@ def stop_dialog(user_id, res):
 def handle_dialog(res, req):
     user_id = req['session']['user_id']
     if req['session']['new'] or user_id not in sessionStorage:
-        res['response']['text'] = 'Привет! Хочешь пройти квиз?'
+        res['response']['text'] = 'Привет! Хочешь пройти тест на темперамент?'
         sessionStorage[user_id] = {
             'wedding_dance': None,
             'step': 0,
