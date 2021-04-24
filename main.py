@@ -49,6 +49,11 @@ def handle_dialog(res, req):
         res['response']['buttons'] = step_0_buttons
         return
     # else лишний, ведь в ифе ретурн
+    if 'помощь' in req['request']['nlu']['tokens'] or 'что ты умеешь' in req['request']['original_utterance']:
+        res['response']['text'] = 'Я определю ваш темперамент и подберу наиболее подходящий танец. ' \
+                                  'Но сначала вам нужно ответить на 6 вопросов, чтобы я смогла вас проанализировать. ' \
+                                  'В конце по желанию выведу ближайшие школы танцев по вашему адресу. А пока ответьте на предыдущий вопрос.'
+        return
     if sessionStorage[user_id]['step'] == 0:
         if 'да' in req['request']['nlu']['tokens']:
             res['response']['text'] = 'В ближайшую субботу у вас есть выбор куда пойти, что вы предпочтёте? ' \
